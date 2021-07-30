@@ -2,7 +2,7 @@
 
 variable "region" {
   description = "AWS region"
-  default     = "us-east-2"
+  default     = "us-west-2"
   type        = string
 }
 
@@ -38,6 +38,12 @@ variable "ingress_with_cidr_blocks" {
   type = list(any)
 }
 
+variable "egress_with_cidr_blocks" {
+  description = "egress with cidr blocks"
+  default = [null]
+  type = list(any)
+}
+
 ## ec2
 
 variable "associate_public_ip_address" {
@@ -57,4 +63,16 @@ variable "instance_type" {
     description = "Type of instance to start"
     default = "t2.micro"
     type = string
+}
+
+variable "private_key" {
+  description = "ssh private key"
+  default = null
+  type = string
+}
+
+variable "emqx_package" {
+  description = "emqx installation package"
+  default = null
+  type = string
 }

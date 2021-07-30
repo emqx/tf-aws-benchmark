@@ -30,8 +30,8 @@ build {
   sources = ["source.amazon-ebs.emqx"]
 
   provisioner "file" {
-    source      = "../emqx-packer.pub"
-    destination = "/tmp/emqx-packer.pub"
+    source      = "../emqx.pub"
+    destination = "/tmp/emqx.pub"
   }
   provisioner "file" {
     source      = "../scripts/start.sh"

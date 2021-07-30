@@ -47,8 +47,16 @@ ingress_with_cidr_blocks = [
     }
   ]
 
+egress_with_cidr_blocks = [
+    {
+      description = "all"
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = "0.0.0.0/0"
+    }
+]
+
 ## ec2
 associate_public_ip_address = true
-ami = "ami-0f42ce11689cf44a7"
 instance_type = "t2.micro"
-

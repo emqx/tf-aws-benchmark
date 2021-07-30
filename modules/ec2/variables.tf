@@ -14,10 +14,14 @@ variable "associate_public_ip_address" {
     type = bool
 }
 
-variable "ami" {
+variable "instance_type" {
     type = string
 }
 
-variable "instance_type" {
-    type = string
+variable "private_key" {
+  type = string
+}
+
+variable "emqx_package" {
+  type = string
 }

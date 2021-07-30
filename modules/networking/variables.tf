@@ -21,3 +21,7 @@ variable "private_subnets" {
 variable "ingress_with_cidr_blocks" {
   type = list(any)
 }
+
+variable "egress_with_cidr_blocks" {
+  type = list(any)
+}
