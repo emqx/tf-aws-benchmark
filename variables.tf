@@ -6,6 +6,18 @@ variable "region" {
   type        = string
 }
 
+variable "access_key" {
+  description = "AWS access key"
+  default     = null
+  type        = string
+}
+
+variable "secret_key" {
+  description = "AWS secret key"
+  default     = null
+  type        = string
+}
+
 variable "namespace" {
   description = "namespace"
   default     = "tf-basic"
