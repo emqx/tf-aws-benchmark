@@ -88,3 +88,21 @@ variable "emqx_package" {
   default = null
   type = string
 }
+
+variable "key_name" {
+  description = "the name of key"
+  default = "aws-bench"
+  type = string
+}
+
+variable "emqx_lic" {
+  description = "the name of key"
+  default = null
+  type = string
+}
+
+variable "os" {
+    description = "os"
+    default = "ubuntu"
+    type = string
+}

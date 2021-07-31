@@ -1,9 +1,22 @@
-## install terraform
+## Install
+### Terraform
 
+[install doc](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-### Install AWS Cli
+### AWS Cli
 
-### Build image
+[install doc](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
-### run
-> terraform apply -var="emqx_package=the path of emqx package" -var="private_key=the private key of ssh"
+## Config
+```bash
+$ aws configure
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: us-west-2
+```
+
+## run
+```bash
+terraform init
+terraform apply -var="private_key=private key" -var="emqx_package=/you_path/emqx.zip" -var="emqx_lic=emqx license"
+```

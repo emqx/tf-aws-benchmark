@@ -25,3 +25,15 @@ variable "private_key" {
 variable "emqx_package" {
   type = string
 }
+
+variable "key_name" {
+  type = string
+}
+
+variable "emqx_lic" {
+  type = string
+}
+
+variable "os" {
+  type = string
+}

@@ -18,4 +18,7 @@ module "ec2" {
   sg_ids  = [module.networking.sg_id]
   private_key = var.private_key
   emqx_package = var.emqx_package
+  key_name = var.key_name
+  emqx_lic = var.emqx_lic
+  os = var.os
 }

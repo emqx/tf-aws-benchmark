@@ -60,3 +60,4 @@ egress_with_cidr_blocks = [
 ## ec2
 associate_public_ip_address = true
 instance_type = "t2.micro"
+os = "ubuntu"
