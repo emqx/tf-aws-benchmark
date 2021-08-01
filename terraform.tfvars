@@ -44,6 +44,13 @@ ingress_with_cidr_blocks = [
       to_port     = 8084
       protocol    = "tcp"
       cidr_blocks = "0.0.0.0/0"
+    },
+    {
+      description = "dashboard"
+      from_port   = 18083
+      to_port     = 18083
+      protocol    = "tcp"
+      cidr_blocks = "0.0.0.0/0"
     }
   ]
 
