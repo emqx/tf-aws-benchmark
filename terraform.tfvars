@@ -6,10 +6,7 @@ namespace = "tf-basic"
 
 ## vpc
 
-cidr = "10.0.0.0/16"
-private_subnets = ["10.0.1.0/24"]
-public_subnets = ["10.0.101.0/24"]
-ingress_with_cidr_blocks = [
+emqx_ingress_with_cidr_blocks = [
     {
       description = "ssh"
       from_port   = 22
@@ -66,5 +63,5 @@ egress_with_cidr_blocks = [
 
 ## ec2
 associate_public_ip_address = true
-instance_type = "t2.micro"
+emqx_instance_type = "t2.micro"
 os = "ubuntu"

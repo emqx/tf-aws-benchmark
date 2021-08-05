@@ -1,7 +1,3 @@
-variable "region" {
-  type = string
-}
-
 variable "namespace" {
   type = string
 }
@@ -16,12 +12,4 @@ variable "public_subnets" {
 
 variable "private_subnets" {
   type = list(string)
-}
-
-variable "ingress_with_cidr_blocks" {
-  type = list(any)
-}
-
-variable "egress_with_cidr_blocks" {
-  type = list(any)
 }

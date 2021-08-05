@@ -53,10 +53,12 @@ data "aws_ami" "ubuntu" {
 
 // Configure the EC2 instance in a public subnet
 resource "aws_instance" "ec2" {
+  count = var.instance_count
+
   ami                         = var.os == "ubuntu" ? data.aws_ami.ubuntu.id : data.aws_ami.centos.id
   associate_public_ip_address = var.associate_public_ip_address
   instance_type               = var.instance_type
-  subnet_id                   = var.vpc.public_subnets[0]
+  subnet_id = var.subnet_ids[count.index % length(var.subnet_ids)]
   vpc_security_group_ids      = var.sg_ids
   key_name = var.key_name
 
@@ -91,9 +93,5 @@ resource "aws_instance" "ec2" {
     throughput = 125
     volume_size = 50
     volume_type = "gp3"
-  }
-
-  tags = {
-    "Name" = "${var.namespace}-EC2-${local.timestamp}"
   }
 }
