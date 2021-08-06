@@ -1,8 +1,8 @@
 # VPC
 
-output "vpc" {
+output "subnet_ids" {
   description = "The VPC"
-  value = module.vpc
+  value = data.aws_subnet_ids.emqx.ids
 }
 
 output "sg_id" {

@@ -56,7 +56,7 @@ resource "aws_instance" "ec2" {
   ami                         = var.os == "ubuntu" ? data.aws_ami.ubuntu.id : data.aws_ami.centos.id
   associate_public_ip_address = var.associate_public_ip_address
   instance_type               = var.instance_type
-  subnet_id                   = var.vpc.public_subnets[0]
+  subnet_id                   = var.subnet_ids[0]
   vpc_security_group_ids      = var.sg_ids
   key_name = var.key_name
 

@@ -14,7 +14,9 @@ module "ec2" {
   namespace  = var.namespace
   instance_type = var.instance_type
   associate_public_ip_address = var.associate_public_ip_address
-  vpc        = module.networking.vpc
+  # vpc        = module.networking.vpc
+  subnet_ids = module.networking.subnet_ids
+
   sg_ids  = [module.networking.sg_id]
   private_key = var.private_key
   emqx_package = var.emqx_package

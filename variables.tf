@@ -2,7 +2,7 @@
 
 variable "region" {
   description = "AWS region"
-  default     = "us-west-2"
+  default     = "ap-southeast-1"
   type        = string
 }
 
@@ -91,7 +91,7 @@ variable "emqx_package" {
 
 variable "key_name" {
   description = "the name of key"
-  default = "aws-bench"
+  default = "aws-sg-bench"
   type = string
 }
 

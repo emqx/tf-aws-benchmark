@@ -2,8 +2,8 @@ variable "namespace" {
   type = string
 }
 
-variable "vpc" {
-  type = any
+variable "subnet_ids" {
+  type = list(string)
 }
 
 variable "sg_ids" {
