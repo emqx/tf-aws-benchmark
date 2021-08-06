@@ -73,6 +73,18 @@ resource "aws_instance" "ec2" {
     destination = "/tmp/emqx.zip"
   }
 
+#   provisioner "remote-exec" {
+#     inline = [
+#       "export EMQX_NODE__PROCESS_LIMIT=2097152",
+#       "export EMQX_NODE__MAX_PORTS=1048576",
+#       "export EMQX_LISTENER__TCP__EXTERNAL__ACCEPTORS=64",
+#       "EMQX_LISTENER__TCP__EXTERNAL__MAX_CONNECTIONS=1024000",
+#       "EMQX_LISTENER__TCP__EXTERNAL__MAX_CONN_RATE=10000",
+#       "EMQX_LISTENER__TCP__EXTERNAL__ACTIVE_N=100"
+# EMQX_SYSMON__LARGE_HEAP=64MB
+#     ]
+#   }
+
   # init system
   provisioner "file" {
     content = templatefile("${path.module}/scripts/init.sh", { emqx_lic = var.emqx_lic })

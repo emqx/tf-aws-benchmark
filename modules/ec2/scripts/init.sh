@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 LIC="/opt/emqx/etc/emqx.lic"
-# ENV="/etc/environment"
 
 # Install necessary dependencies
 sudo apt-get -y update
@@ -45,16 +44,16 @@ sudo sysctl -w net.ipv4.tcp_max_tw_buckets=1048576
 sudo sysctl -w net.ipv4.tcp_fin_timeout=15
 
 # export emqx variables
-sudo cat >> /etc/environment<<EOF
-EMQX_NODE__PROCESS_LIMIT=2097152
-EMQX_NODE__MAX_PORTS=1048576
-EMQX_LISTENER__TCP__EXTERNAL__ACCEPTORS=64
-EMQX_LISTENER__TCP__EXTERNAL__MAX_CONNECTIONS=1024000
-EMQX_LISTENER__TCP__EXTERNAL__MAX_CONN_RATE=10000
-EMQX_LISTENER__TCP__EXTERNAL__ACTIVE_N=100
-EMQX_SYSMON__LARGE_HEAP=64MB
+sudo cat >> ~/.bashrc<<EOF
+export EMQX_NODE__PROCESS_LIMIT=2097152
+export EMQX_NODE__MAX_PORTS=1048576
+export EMQX_LISTENER__TCP__EXTERNAL__ACCEPTORS=64
+export EMQX_LISTENER__TCP__EXTERNAL__MAX_CONNECTIONS=1024000
+export EMQX_LISTENER__TCP__EXTERNAL__MAX_CONN_RATE=10000
+export EMQX_LISTENER__TCP__EXTERNAL__ACTIVE_N=100
+export EMQX_SYSMON__LARGE_HEAP=64MB
 EOF
-source /etc/environment
+source ~/.bashrc
 
 # install emqx
 sudo unzip /tmp/emqx.zip -d /opt
