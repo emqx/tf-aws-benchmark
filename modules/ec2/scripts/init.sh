@@ -13,7 +13,7 @@ sudo sysctl -w fs.nr_open=2097152
 echo 2097152 | sudo tee /proc/sys/fs/nr_open
 sudo ulimit -n 1048576
 
-echo 'fs.file-max = 1048576' | sudo tee -a /etc/sysctl.conf
+echo 'fs.file-max = 2097152' | sudo tee -a /etc/sysctl.conf
 echo 'DefaultLimitNOFILE=1048576' | sudo tee -a /etc/systemd/system.conf
 
 sudo tee -a /etc/security/limits.conf << EOF
@@ -57,13 +57,13 @@ source ~/.bashrc
 
 # install emqx
 sudo unzip /tmp/emqx.zip -d $HOME
+sudo chown -R ubuntu:ubuntu $HOME/emqx
 sudo rm /tmp/emqx.zip
 
 # create emqx license file
-sudo chown ubuntu:ubuntu $LIC
 sudo cat > $LIC<<EOF
 ${emqx_lic}
 EOF
 
 # start emqx
-sudo $HOME/emqx/bin/emqx start
+$HOME/emqx/bin/emqx start
