@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-LIC="/opt/emqx/etc/emqx.lic"
+LIC="/home/ubuntu/emqx/etc/emqx.lic"
+HOME="/home/ubuntu"
 
 # Install necessary dependencies
 sudo apt-get -y update
@@ -48,7 +49,6 @@ sudo cat >> ~/.bashrc<<EOF
 export EMQX_NODE__PROCESS_LIMIT=2097152
 export EMQX_NODE__MAX_PORTS=1048576
 export EMQX_LISTENER__TCP__EXTERNAL__ACCEPTORS=64
-export EMQX_LISTENER__TCP__EXTERNAL__MAX_CONNECTIONS=1024000
 export EMQX_LISTENER__TCP__EXTERNAL__MAX_CONN_RATE=10000
 export EMQX_LISTENER__TCP__EXTERNAL__ACTIVE_N=100
 export EMQX_SYSMON__LARGE_HEAP=64MB
@@ -56,7 +56,7 @@ EOF
 source ~/.bashrc
 
 # install emqx
-sudo unzip /tmp/emqx.zip -d /opt
+sudo unzip /tmp/emqx.zip -d $HOME
 sudo rm /tmp/emqx.zip
 
 # create emqx license file
@@ -66,4 +66,4 @@ ${emqx_lic}
 EOF
 
 # start emqx
-sudo /opt/emqx/bin/emqx start
+sudo $HOME/emqx/bin/emqx start
