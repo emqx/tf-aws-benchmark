@@ -45,20 +45,27 @@ sudo sysctl -w net.ipv4.tcp_max_tw_buckets=1048576
 sudo sysctl -w net.ipv4.tcp_fin_timeout=15
 
 # export emqx variables
-sudo cat >> ~/.bashrc<<EOF
-export EMQX_NODE__PROCESS_LIMIT=2097152
-export EMQX_NODE__MAX_PORTS=1048576
-export EMQX_LISTENER__TCP__EXTERNAL__ACCEPTORS=64
-export EMQX_LISTENER__TCP__EXTERNAL__MAX_CONN_RATE=10000
-export EMQX_LISTENER__TCP__EXTERNAL__ACTIVE_N=100
-export EMQX_SYSMON__LARGE_HEAP=64MB
-EOF
-source ~/.bashrc
+# sudo cat >> ~/.bashrc<<EOF
+# export EMQX_NODE__PROCESS_LIMIT=2097152
+# export EMQX_NODE__MAX_PORTS=1048576
+# export EMQX_LISTENER__TCP__EXTERNAL__ACCEPTORS=64
+# export EMQX_LISTENER__TCP__EXTERNAL__MAX_CONN_RATE=10000
+# export EMQX_LISTENER__TCP__EXTERNAL__ACTIVE_N=100
+# export EMQX_SYSMON__LARGE_HEAP="64MB"
+# EOF
+# . ~/.bashrc
 
 # install emqx
 sudo unzip /tmp/emqx.zip -d $HOME
 sudo chown -R ubuntu:ubuntu $HOME/emqx
 sudo rm /tmp/emqx.zip
+
+# emqx turning
+sudo sed -i 's/## node.process_limit = 2097152/node.process_limit = 2097152/g' $HOME/emqx/etc/emqx.conf
+sudo sed -i 's/## node.max_ports = 1048576/node.max_ports = 1048576/g' $HOME/emqx/etc/emqx.conf
+sudo sed -i 's/listener.tcp.external.acceptors = 8/listener.tcp.external.acceptors = 64/g' $HOME/emqx/etc/listeners.conf
+sudo sed -i 's/listener.tcp.external.max_conn_rate = 1000/listener.tcp.external.max_conn_rate = 10000/g' $HOME/emqx/etc/listeners.conf
+sudo sed -i 's/sysmon.large_heap = 8MB/sysmon.large_heap = 64MB/g' $HOME/emqx/etc/sys_mon.conf
 
 # create emqx license file
 sudo cat > $LIC<<EOF
