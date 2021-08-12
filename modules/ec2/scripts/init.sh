@@ -61,7 +61,7 @@ sudo unzip /tmp/emqx.zip -d $HOME
 sudo chown -R ubuntu:ubuntu $HOME/emqx
 sudo rm /tmp/emqx.zip
 
-# emqx turning
+# emqx tuning
 sudo sed -i 's/## node.process_limit = 2097152/node.process_limit = 2097152/g' $HOME/emqx/etc/emqx.conf
 sudo sed -i 's/## node.max_ports = 1048576/node.max_ports = 1048576/g' $HOME/emqx/etc/emqx.conf
 sudo sed -i 's/listener.tcp.external.acceptors = 8/listener.tcp.external.acceptors = 64/g' $HOME/emqx/etc/listeners.conf
