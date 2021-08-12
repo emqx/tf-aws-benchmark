@@ -2,10 +2,6 @@ variable "namespace" {
   type = string
 }
 
-variable "vpc" {
-  type = any
-}
-
 variable "sg_ids" {
   type = list(string)
 }
@@ -19,11 +15,11 @@ variable "subnet_ids" {
 }
 
 variable "associate_public_ip_address" {
-    type = bool
+  type = bool
 }
 
 variable "instance_type" {
-    type = string
+  type = string
 }
 
 variable "private_key" {

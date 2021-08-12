@@ -1,5 +1,5 @@
 variable "namespace" {
-    type = string
+  type = string
 }
 
 variable "ingress_with_cidr_blocks" {
@@ -11,5 +11,5 @@ variable "egress_with_cidr_blocks" {
 }
 
 variable "vpc_id" {
-    type = string
+  type = string
 }
