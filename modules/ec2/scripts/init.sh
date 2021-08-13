@@ -75,4 +75,4 @@ ${emqx_lic}
 EOF
 
 # start emqx
-sudo $HOME/emqx/bin/emqx start
+# sudo $HOME/emqx/bin/emqx start
