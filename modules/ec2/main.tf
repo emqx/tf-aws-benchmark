@@ -104,3 +104,11 @@ resource "aws_instance" "ec2" {
     "Name" = "${var.namespace}-EC2-${local.timestamp}"
   }
 }
+
+# data "aws_instance" "ec2" {
+
+#   filter {
+#     name   = "tag:Name"
+#     values = ["instance-name-tag"]
+#   }
+# }
