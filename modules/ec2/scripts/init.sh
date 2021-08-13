@@ -17,8 +17,10 @@ echo 'fs.file-max = 2097152' | sudo tee -a /etc/sysctl.conf
 echo 'DefaultLimitNOFILE=1048576' | sudo tee -a /etc/systemd/system.conf
 
 sudo tee -a /etc/security/limits.conf << EOF
-*      soft   nofile      1048576
-*      hard   nofile      1048576
+root      soft   nofile      1048576
+root      hard   nofile      1048576
+ubuntu    soft   nofile      1048576
+ubuntu    hard   nofile      1048576
 EOF
 
 # tcp config
