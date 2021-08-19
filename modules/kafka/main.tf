@@ -43,7 +43,7 @@ resource "aws_msk_cluster" "kafka" {
   }
 }
 
-resource "aws_msk_configuration" "example" {
+resource "aws_msk_configuration" "kafka" {
   kafka_versions = [var.kafka_version]
   name           = "${var.cluster_name}-configuration"
 
