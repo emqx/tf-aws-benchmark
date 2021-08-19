@@ -12,12 +12,28 @@
 # }
 
 
-resource "aws_default_vpc" "default" {
-  tags = {
-    Name = "Default VPC"
-  }
+# resource "aws_default_vpc" "default" {
+#   tags = {
+#     Name = "Default VPC"
+#   }
+# }
+
+# data "aws_subnet_ids" "emqx" {
+#   vpc_id = aws_default_vpc.default.id
+# }
+
+data "aws_availability_zones" "available" {
+  state = "available"
 }
 
-data "aws_subnet_ids" "emqx" {
-  vpc_id = aws_default_vpc.default.id
+
+resource "aws_subnet" "sn" {
+  count = length(var.subnet_cidr_blocks)
+
+  vpc_id = var.vpc_id
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+  cidr_block = var.subnet_cidr_blocks[count.index]
+  tags = {
+    Name = "${var.namespace}-sn"
+  }
 }

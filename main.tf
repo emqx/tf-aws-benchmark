@@ -1,46 +1,41 @@
-locals {
-  project = {
-    emqx = {
-      instance_count = var.emqx_instance_count,
-      instance_type        = var.emqx_instance_type,
-      namespace            = var.namespace
-    }
+# Default VPC
+
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
   }
 }
 
-module "networking" {
+#######################################
+## emqx modules
+#######################################
+
+module "emqx_networking" {
   source = "./modules/networking"
 
-  # for_each = local.project
-
-  # namespace = "${each.value.namespace}-${each.key}"
-  # cidr = var.vpc_cidr_block
-  # private_subnets = slice(var.private_subnet_cidr_blocks, 0, each.value.subnets_per_vpc)
-  # public_subnets = slice(var.public_subnet_cidr_blocks, 0, each.value.subnets_per_vpc)
+  namespace = var.emqx_namespace
+  vpc_id = aws_default_vpc.default.id
+  subnet_cidr_blocks = slice(var.subnet_cidr_blocks, 0, var.emqx_instance_count)
 }
 
-module "security_group" {
+module "emqx_security_group" {
   source = "./modules/security_group"
 
-  for_each = local.project
-
-  namespace                = "${each.value.namespace}-${each.key}"
+  namespace                = var.emqx_namespace
+  vpc_id = aws_default_vpc.default.id
   ingress_with_cidr_blocks = var.emqx_ingress_with_cidr_blocks
   egress_with_cidr_blocks  = var.egress_with_cidr_blocks
-  vpc_id                   = module.networking.vpc_id
 }
 
-module "ec2" {
+module "emqx_ec2" {
   source = "./modules/ec2"
 
-  for_each = local.project
-
-  namespace                   = "${each.value.namespace}-${each.key}"
-  instance_count              = each.value.instance_count
-  instance_type               = each.value.instance_type
+  namespace                   = var.emqx_namespace
+  instance_count              = var.emqx_instance_count
+  instance_type               = var.emqx_instance_type
   associate_public_ip_address = var.associate_public_ip_address
-  subnet_ids   = module.networking.subnet_ids
-  sg_ids       = [module.security_group[each.key].sg_id]
+  subnet_ids   = module.emqx_networking.subnet_ids
+  sg_ids       = [module.emqx_security_group.sg_id]
   private_key  = var.private_key
   emqx_package = var.emqx_package
   key_name     = var.key_name
@@ -48,3 +43,40 @@ module "ec2" {
   os           = var.os
 }
 
+#######################################
+## kafka modules
+#######################################
+
+module "kafka_networking" {
+  source = "./modules/networking"
+
+  namespace = var.kafka_namespace
+  vpc_id = aws_default_vpc.default.id
+  subnet_cidr_blocks = slice(var.subnet_cidr_blocks, var.emqx_instance_count, var.emqx_instance_count + var.kafka_instance_count)
+}
+
+module "kafka_security_group" {
+  source = "./modules/security_group"
+
+  namespace                = var.kafka_namespace
+  vpc_id = aws_default_vpc.default.id
+  ingress_with_cidr_blocks = var.kafka_ingress_with_cidr_blocks
+  egress_with_cidr_blocks  = var.egress_with_cidr_blocks
+}
+
+module "kafka" {
+  source = "./modules/kafka"
+
+  cluster_name = var.kafka_cluster_name
+  vpc_id = aws_default_vpc.default.id
+  instance_count = var.kafka_instance_count
+  instance_type = var.kafka_instance_type
+  kafka_version = var.kafka_version
+  ebs_volume_size = var.kafka_ebs_volume_size
+  subnet_ids   = module.kafka_networking.subnet_ids
+  sg_ids       = [module.kafka_security_group.sg_id]
+  replication_factor = var.kafka_replication_factor
+  number_partitions = var.kafka_number_partitions
+}
+
+# module "kafka_"

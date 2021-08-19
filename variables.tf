@@ -18,80 +18,41 @@ variable "secret_key" {
   default     = null
 }
 
-variable "namespace" {
-  description = "namespace"
+variable "emqx_namespace" {
+  description = "emqx namespace"
   type        = string
-  default     = "tf"
+  default     = "tf-emqx"
+}
+
+variable "kafka_namespace" {
+  description = "kafka namespace"
+  type        = string
+  default     = "tf-kafka"
 }
 
 ## vpc
 
-# variable "vpc_cidr_block" {
-#   description = "cidr of vpc"
-#   type = string
-#   default = "10.0.0.0/16"
-# }
-
-# variable "private_subnet_cidr_blocks" {
-#   description = "private subnets of vpc"
-#   type = list(string)
-#   default = [
-#     "10.0.1.0/24",
-#     "10.0.2.0/24",
-#     "10.0.3.0/24",
-#     "10.0.4.0/24",
-#     "10.0.5.0/24",
-#     "10.0.6.0/24",
-#     "10.0.7.0/24",
-#     "10.0.8.0/24",
-#     "10.0.9.0/24",
-#     "10.0.10.0/24",
-#     "10.0.11.0/24",
-#     "10.0.12.0/24",
-#     "10.0.13.0/24",
-#     "10.0.14.0/24",
-#     "10.0.15.0/24",
-#     "10.0.16.0/24"
-#   ]
-# }
-
-# variable "public_subnet_cidr_blocks" {
-#   description = "public subnets of vpc"
-#   type = list(string)
-#   default = [
-#   "10.0.101.0/24",
-#   "10.0.102.0/24",
-#   "10.0.103.0/24",
-#   "10.0.104.0/24",
-#   "10.0.105.0/24",
-#   "10.0.106.0/24",
-#   "10.0.107.0/24",
-#   "10.0.108.0/24",
-#   "10.0.109.0/24",
-#   "10.0.110.0/24",
-#   "10.0.111.0/24",
-#   "10.0.112.0/24",
-#   "10.0.113.0/24",
-#   "10.0.114.0/24",
-#   "10.0.115.0/24",
-#   "10.0.116.0/24"
-# ]
-# }
-
-# variable "subnets_per_vpc" {
-#   description = "Number of subnets of per vpc"
-#   type = string
-#   default = 1
-# }
-
-# variable "emqx_instances_per_subnet" {
-#   description = "Number of instances of per vpc of emqx"
-#   type = string
-#   default = 3
-# }
+variable "subnet_cidr_blocks" {
+  description = "subnets of vpc"
+  type = list(string)
+  default = [
+      "172.31.101.0/24",
+      "172.31.102.0/24",
+      "172.31.103.0/24",
+      "172.31.104.0/24",
+      "172.31.105.0/24",
+      "172.31.106.0/24",
+      "172.31.107.0/24",
+      "172.31.108.0/24",
+      "172.31.109.0/24",
+      "172.31.110.0/24",
+      "172.31.111.0/24",
+      "172.31.112.0/24"
+    ]
+}
 
 variable "emqx_ingress_with_cidr_blocks" {
-  description = "ingress with cidr blocks"
+  description = "ingress of emqx with cidr blocks"
   type        = list(any)
   default     = [null]
 }
@@ -102,6 +63,11 @@ variable "egress_with_cidr_blocks" {
   default     = [null]
 }
 
+variable "kafka_ingress_with_cidr_blocks" {
+  description = "ingress of kafka with cidr blocks"
+  type        = list(any)
+  default     = [null]
+}
 
 ## ec2
 
@@ -158,5 +124,48 @@ variable "emqx_instance_type" {
   description = "Instance type of emqx"
   type        = string
   default     = "t2.micro"
+}
+
+# kafka
+variable "kafka_instance_type" {
+  description = "Instance type of kafka"
+  type        = string
+  default     = "kafka.m5.large"
+}
+
+variable "kafka_instance_count" {
+  description = "Instance count of kafka"
+  type        = number
+  default     = 3
+}
+
+variable "kafka_version" {
+  description = "Version of kafka"
+  type = string
+  default = "2.6.2"
+}
+
+variable "kafka_ebs_volume_size" {
+  description = "The size in GiB of the EBS volume"
+  type = number
+  default = 1000
+}
+
+variable "kafka_cluster_name" {
+  description = "The cluster name of kafka"
+  type = string
+  default = "kafka"
+}
+
+variable "kafka_replication_factor" {
+  description = "Enables autocreation of a topic on the server"
+  type = number
+  default = 3
+}
+
+variable "kafka_number_partitions" {
+  description = "The number of log partitions per topic"
+  type = number
+  default = 6
 }
 

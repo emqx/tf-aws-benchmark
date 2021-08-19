@@ -1,15 +1,11 @@
-# variable "namespace" {
-#   type = string
-# }
+variable "namespace" {
+  type = string
+}
 
-# variable "cidr" {
-#   type = string
-# }
+variable "subnet_cidr_blocks" {
+  type = list(string)
+}
 
-# variable "public_subnets" {
-#   type = list(string)
-# }
-
-# variable "private_subnets" {
-#   type = list(string)
-# }
+variable "vpc_id" {
+  type = string
+}

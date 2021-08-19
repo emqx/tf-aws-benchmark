@@ -92,13 +92,12 @@ resource "aws_instance" "ec2" {
     ]
   }
 
-  # validate the above variables, you have to start emqx separately
+  # Note: validate the above variables, you have to start emqx separately
   provisioner "remote-exec" {
     inline = [
       "sudo /home/ubuntu/emqx/bin/emqx start"
     ]
   }
-
 
   root_block_device {
     iops        = 3000
