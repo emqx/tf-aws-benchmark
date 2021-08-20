@@ -18,7 +18,7 @@ output "kafka_bootstrap_brokers_tls" {
   value       = module.kafka.bootstrap_brokers_tls
 }
 
-output "kafka_ip" {
+output "zk_ip" {
   description = " a TLS connection host:port"
-  value  = element(split(",", module.kafka.bootstrap_brokers_tls), 0)
+  value  = element(split(",", module.kafka.zookeeper_connect_string), 0)
 }

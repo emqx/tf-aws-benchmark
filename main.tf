@@ -79,4 +79,3 @@ module "kafka" {
   number_partitions = var.kafka_number_partitions
 }
 
-# module "kafka_"
