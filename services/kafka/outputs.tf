@@ -1,13 +1,3 @@
-output "emqx_public_ips" {
-  description = "public ip of ec2 for each project"
-  value = module.emqx_ec2.public_ip
-}
-
-output "emqx_private_ips" {
-  description = "private ip of ec2 for each project"
-  value       = module.emqx_ec2.private_ip
-}
-
 output "zookeeper_connect_string" {
   description = "Connection string of kafka"
   value = module.kafka.zookeeper_connect_string
