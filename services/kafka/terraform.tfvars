@@ -31,6 +31,3 @@ egress_with_cidr_blocks = [
     cidr_blocks = "0.0.0.0/0"
   }
 ]
-
-## ec2
-associate_public_ip_address = true

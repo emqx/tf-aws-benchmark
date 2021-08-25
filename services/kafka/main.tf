@@ -1,7 +1,9 @@
 # Default VPC
 
-data "aws_vpc" "default" {
-  default = true
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
+  }
 }
 
 
@@ -13,7 +15,7 @@ module "kafka_networking" {
   source = "../../modules/networking"
 
   namespace = var.kafka_namespace
-  vpc_id = data.aws_vpc.default.id
+  vpc_id = aws_default_vpc.default.id
   subnet_cidr_blocks = var.subnet_cidr_blocks
 }
 
