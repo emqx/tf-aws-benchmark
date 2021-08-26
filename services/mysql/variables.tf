@@ -70,7 +70,7 @@ variable "allocated_storage" {
 variable "db_name" {
   description = "The name to use for the database"
   type        = string
-  default     = "emqx"
+  default     = "mqtt"
 }
 
 variable "db_username" {
