@@ -1,6 +1,6 @@
 variable "bucket_name" {
   type        = string
-  default = "tf-test-automation"
+  default = "test.tf-test-automation"
   description = "The name of the S3 bucket. Must be globally unique."
 }
 
