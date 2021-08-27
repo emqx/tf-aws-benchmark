@@ -43,13 +43,13 @@ terraform destroy -auto-approve -var="private_key=private key" -var="emqx_packag
 ```bash
 cd kafka
 terraform init
-terraform apply -auto-approve -var="zk_ip=ip:2181" -var="private_key=private key"
+terraform apply -auto-approve
 ```
 ### destory
 ```bash
 cd kafka
 terraform init
-terraform destroy -auto-approve -var="zk_ip=ip:2181" -var="private_key=private key"
+terraform destroy -auto-approve
 ```
 
 ## mysql

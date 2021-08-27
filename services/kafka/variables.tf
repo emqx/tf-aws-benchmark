@@ -49,21 +49,6 @@ variable "kafka_ingress_with_cidr_blocks" {
   default     = [null]
 }
 
-## ec2
-
-variable "associate_public_ip_address" {
-  description = "Whether to associate a public IP address with an instance in a VPC"
-  type        = bool
-  default     = true
-}
-
-
-variable "key_name" {
-  description = "the name of key"
-  type        = string
-  default     = "aws-sg-bench"
-}
-
 
 # kafka
 variable "kafka_instance_type" {
