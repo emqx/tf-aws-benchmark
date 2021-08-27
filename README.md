@@ -35,7 +35,7 @@ terraform apply -auto-approve -var="private_key=private key" -var="emqx_package=
 ```bash
 cd emqx
 terraform init
-terraform destory -auto-approve -var="private_key=private key" -var="emqx_package=/you_path/emqx.zip" -var="emqx_lic=emqx license"
+terraform destroy -auto-approve -var="private_key=private key" -var="emqx_package=/you_path/emqx.zip" -var="emqx_lic=emqx license"
 ```
 
 ## Kafka
@@ -49,7 +49,7 @@ terraform apply -auto-approve -var="zk_ip=ip:2181" -var="private_key=private key
 ```bash
 cd kafka
 terraform init
-terraform destory -auto-approve -var="zk_ip=ip:2181" -var="private_key=private key"
+terraform destroy -auto-approve -var="zk_ip=ip:2181" -var="private_key=private key"
 ```
 
 ## mysql
@@ -63,6 +63,6 @@ terraform apply -auto-approve -var="db_password=abcd1234" -var="instance_class=x
 ```bash
 cd mysql
 terraform init
-terraform destory -auto-approve -var="db_password=abcd1234"
+terraform destroy -auto-approve -var="db_password=abcd1234"
 ```
 
