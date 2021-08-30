@@ -19,5 +19,5 @@ resource "aws_db_instance" "mysql" {
   password            = var.db_password
   vpc_security_group_ids = var.sg_ids
   skip_final_snapshot = true
-#   publicly_accessible = true
+  publicly_accessible = true
 }
