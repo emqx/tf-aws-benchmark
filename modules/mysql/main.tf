@@ -18,6 +18,7 @@ resource "aws_db_instance" "mysql" {
   db_subnet_group_name    = aws_db_subnet_group.mysql.name
   password            = var.db_password
   vpc_security_group_ids = var.sg_ids
+  engine_version = "8.0"
   skip_final_snapshot = true
   publicly_accessible = true
 }
