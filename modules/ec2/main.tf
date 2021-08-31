@@ -96,6 +96,7 @@ resource "aws_instance" "ec2" {
   provisioner "remote-exec" {
     inline = [
       "sudo /home/ubuntu/emqx/bin/emqx start"
+      # "sudo curl -k https://13.251.133.132/xmeter_tools/script.sh | sh"
     ]
   }
 
