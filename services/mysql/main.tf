@@ -1,16 +1,16 @@
-terraform {
-  backend "s3" {
+# terraform {
+#   backend "s3" {
 
-    # This backend configuration is filled in automatically at test time by Terratest. If you wish to run this example
-    # manually, uncomment and fill in the config below.
+#     # This backend configuration is filled in automatically at test time by Terratest. If you wish to run this example
+#     # manually, uncomment and fill in the config below.
 
-    bucket         = "test.tf-test-automation"
-    key            = "mysql/terraform.tfstate"
-    region         = "ap-southeast-1"
-    dynamodb_table = "tf-test-automation"
-    encrypt        = true
-  }
-}
+#     bucket         = "test.tf-test-automation"
+#     key            = "mysql/terraform.tfstate"
+#     region         = "ap-southeast-1"
+#     dynamodb_table = "tf-test-automation"
+#     encrypt        = true
+#   }
+# }
 
 # Default VPC
 
@@ -21,7 +21,7 @@ resource "aws_default_vpc" "default" {
 }
 
 module "mysql_networking" {
-  source = "../../../modules/networking"
+  source = "../../modules/networking"
 
   namespace = var.mysql_namespace
   vpc_id = aws_default_vpc.default.id
@@ -29,7 +29,7 @@ module "mysql_networking" {
 }
 
 module "mysql_security_group" {
-  source = "../../../modules/security_group"
+  source = "../../modules/security_group"
 
   namespace                = var.mysql_namespace
   vpc_id = aws_default_vpc.default.id
@@ -38,7 +38,7 @@ module "mysql_security_group" {
 }
 
 module "mysql" {
-  source = "../../../modules/mysql"
+  source = "../../modules/mysql"
 
   db_name     = var.db_name
   db_username = var.db_username

@@ -1,16 +1,16 @@
-terraform {
-  backend "s3" {
+# terraform {
+#   backend "s3" {
 
-    # This backend configuration is filled in automatically at test time by Terratest. If you wish to run this example
-    # manually, uncomment and fill in the config below.
+#     # This backend configuration is filled in automatically at test time by Terratest. If you wish to run this example
+#     # manually, uncomment and fill in the config below.
 
-    bucket         = "test.tf-test-automation"
-    key            = "emqx/terraform.tfstate"
-    region         = "ap-southeast-1"
-    dynamodb_table = "tf-test-automation"
-    encrypt        = true
-  }
-}
+#     bucket         = "test.tf-test-automation"
+#     key            = "emqx/terraform.tfstate"
+#     region         = "ap-southeast-1"
+#     dynamodb_table = "tf-test-automation"
+#     encrypt        = true
+#   }
+# }
 
 # Default VPC
 
@@ -25,7 +25,7 @@ resource "aws_default_vpc" "default" {
 #######################################
 
 module "emqx_networking" {
-  source = "../../../modules/networking"
+  source = "../../modules/networking"
 
   namespace = var.emqx_namespace
   vpc_id = aws_default_vpc.default.id
@@ -33,7 +33,7 @@ module "emqx_networking" {
 }
 
 module "emqx_security_group" {
-  source = "../../../modules/security_group"
+  source = "../../modules/security_group"
 
   namespace                = var.emqx_namespace
   vpc_id = aws_default_vpc.default.id
@@ -42,7 +42,7 @@ module "emqx_security_group" {
 }
 
 module "emqx_ec2" {
-  source = "../../../modules/ec2"
+  source = "../../modules/ec2"
 
   namespace                   = var.emqx_namespace
   instance_count              = var.emqx_instance_count
