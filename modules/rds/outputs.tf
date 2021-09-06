@@ -9,6 +9,6 @@
 # }
 
 output "endpoint" {
-  value       = aws_db_instance.mysql.endpoint
+  value       = aws_db_instance.rds.endpoint
   description = "Connect to the database at this endpoint"
 }

@@ -60,6 +60,7 @@ resource "aws_instance" "ec2" {
   count = var.instance_count
 
   ami                         = var.os == "ubuntu" ? data.aws_ami.ubuntu.id : data.aws_ami.centos.id
+  // always be true as you have to get public ip
   associate_public_ip_address = var.associate_public_ip_address
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_ids[count.index % length(var.subnet_ids)]

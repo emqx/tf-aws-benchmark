@@ -6,10 +6,10 @@ variable "region" {
   default     = "ap-southeast-1"
 }
 
-variable "mysql_namespace" {
-  description = "mysql namespace"
+variable "pgsql_namespace" {
+  description = "pgsql namespace"
   type        = string
-  default     = "tf-mysql"
+  default     = "tf-pgsql"
 }
 
 variable "access_key" {
@@ -26,12 +26,12 @@ variable "secret_key" {
 
 ## vpc
 
-variable "mysql_subnet_cidr_blocks" {
+variable "pgsql_subnet_cidr_blocks" {
   description = "subnets of vpc"
   type = list(string)
   default = [
-      "172.31.120.0/24",
-      "172.31.121.0/24"
+      "172.31.140.0/24",
+      "172.31.141.0/24"
     ]
 }
 
@@ -43,29 +43,29 @@ variable "egress_with_cidr_blocks" {
   default     = [null]
 }
 
-variable "mysql_ingress_with_cidr_blocks" {
-  description = "ingress of mysql with cidr blocks"
+variable "pgsql_ingress_with_cidr_blocks" {
+  description = "ingress of pgsql with cidr blocks"
   type        = list(any)
   default     = [null]
 }
 
-## mysql
+## rds
 
 variable "engine" {
   type        = string
-  default     = "mysql"
+  default     = "postgres"
   description = "The engine of rds"
 }
 
-variable "mysql_engine_version" {
+variable "pgsql_engine_version" {
   type        = string
-  default     = "8.0"
-  description = "The engine version of mysql"
+  default     = "13.3"
+  description = "The engine version of pgsql"
 }
 
 variable "db_id" {
   type        = string
-  default     = "tf-mysql"
+  default     = "tf-pgsql"
   description = "description"
 }
 

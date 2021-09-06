@@ -58,12 +58,6 @@ variable "egress_with_cidr_blocks" {
   default     = [null]
 }
 
-variable "kafka_ingress_with_cidr_blocks" {
-  description = "ingress of kafka with cidr blocks"
-  type        = list(any)
-  default     = [null]
-}
-
 ## ec2
 
 variable "associate_public_ip_address" {

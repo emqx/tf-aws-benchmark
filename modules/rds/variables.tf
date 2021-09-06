@@ -44,3 +44,12 @@ variable "identifier" {
   description = "The name of the RDS instance"
 }
 
+variable "engine" {
+  type        = string
+  description = "The engine of the RDS instance"
+}
+
+variable "engine_version" {
+  type        = string
+  description = "The version of the engine of the RDS instance"
+}
