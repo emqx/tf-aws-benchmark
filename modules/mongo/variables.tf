@@ -26,5 +26,5 @@ variable "engine_version" {
 
 variable "sg_ids" {
   description = "The security group ids for mongo"
-  type = list(string)
+  type        = list(string)
 }

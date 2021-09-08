@@ -28,11 +28,11 @@ variable "secret_key" {
 
 variable "pgsql_subnet_cidr_blocks" {
   description = "subnets of vpc"
-  type = list(string)
+  type        = list(string)
   default = [
-      "172.31.140.0/24",
-      "172.31.141.0/24"
-    ]
+    "172.31.140.0/24",
+    "172.31.141.0/24"
+  ]
 }
 
 ## security group

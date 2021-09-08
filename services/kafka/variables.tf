@@ -29,12 +29,12 @@ variable "kafka_namespace" {
 
 variable "subnet_cidr_blocks" {
   description = "subnets of vpc"
-  type = list(string)
+  type        = list(string)
   default = [
-      "172.31.110.0/24",
-      "172.31.111.0/24",
-      "172.31.112.0/24"
-    ]
+    "172.31.110.0/24",
+    "172.31.111.0/24",
+    "172.31.112.0/24"
+  ]
 }
 
 variable "egress_with_cidr_blocks" {
@@ -65,31 +65,31 @@ variable "kafka_instance_count" {
 
 variable "kafka_version" {
   description = "Version of kafka"
-  type = string
-  default = "2.6.2"
+  type        = string
+  default     = "2.6.2"
 }
 
 variable "kafka_ebs_volume_size" {
   description = "The size in GiB of the EBS volume"
-  type = number
-  default = 1000
+  type        = number
+  default     = 1000
 }
 
 variable "kafka_cluster_name" {
   description = "The cluster name of kafka"
-  type = string
-  default = "kafka"
+  type        = string
+  default     = "kafka"
 }
 
 variable "kafka_replication_factor" {
   description = "Enables autocreation of a topic on the server"
-  type = number
-  default = 3
+  type        = number
+  default     = 3
 }
 
 variable "kafka_number_partitions" {
   description = "The number of log partitions per topic"
-  type = number
-  default = 6
+  type        = number
+  default     = 6
 }
 

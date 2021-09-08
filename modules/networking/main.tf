@@ -30,9 +30,9 @@ data "aws_availability_zones" "available" {
 resource "aws_subnet" "sn" {
   count = length(var.subnet_cidr_blocks)
 
-  vpc_id = var.vpc_id
+  vpc_id            = var.vpc_id
   availability_zone = data.aws_availability_zones.available.names[count.index]
-  cidr_block = var.subnet_cidr_blocks[count.index]
+  cidr_block        = var.subnet_cidr_blocks[count.index]
   tags = {
     Name = "${var.namespace}-sn"
   }

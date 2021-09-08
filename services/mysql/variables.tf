@@ -28,11 +28,11 @@ variable "secret_key" {
 
 variable "mysql_subnet_cidr_blocks" {
   description = "subnets of vpc"
-  type = list(string)
+  type        = list(string)
   default = [
-      "172.31.120.0/24",
-      "172.31.121.0/24"
-    ]
+    "172.31.120.0/24",
+    "172.31.121.0/24"
+  ]
 }
 
 ## security group

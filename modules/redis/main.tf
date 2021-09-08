@@ -18,7 +18,7 @@ data "aws_ami" "ubuntu" {
   }
 }
 
-resource "aws_instance" "pulsar" {
+resource "aws_instance" "redis" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   // always be true as you have to get public ip
@@ -34,7 +34,17 @@ resource "aws_instance" "pulsar" {
     private_key = var.private_key
   }
 
-  # init system
+  # install redis
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "sudo apt-get update",
+  #     "sudo apt install redis-server",
+  #     "sudo sed -i 's/bind 127.0.0.1 ::1/bind ${self.private_ip} ::1/g' /etc/redis/redis.conf",
+  #     "sudo systemctl start redis.service"
+  #   ]
+  # }
+
+  # install redis
   provisioner "file" {
     content     = templatefile("${path.module}/scripts/init.sh", { local_ip = self.private_ip })
     destination = "/tmp/init.sh"
@@ -47,6 +57,13 @@ resource "aws_instance" "pulsar" {
     ]
   }
 
+  # make sure the config valid
+  provisioner "remote-exec" {
+    inline = [
+      "sudo systemctl restart redis.service"
+    ]
+  }
+
   root_block_device {
     iops        = 3000
     throughput  = 125
@@ -55,6 +72,6 @@ resource "aws_instance" "pulsar" {
   }
 
   tags = {
-    Name = "${var.namespace}-pulsar"
+    Name = "${var.namespace}"
   }
 }

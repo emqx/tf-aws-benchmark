@@ -1,7 +1,7 @@
 locals {
-  timestamp = formatdate("DD-MMM-YYYY-hh:mm", timestamp())
-  emqx_anchor = element(aws_instance.ec2[*].private_ip, 0)
-  emqx_rest = slice(aws_instance.ec2[*].public_ip, 1, var.instance_count)
+  timestamp       = formatdate("DD-MMM-YYYY-hh:mm", timestamp())
+  emqx_anchor     = element(aws_instance.ec2[*].private_ip, 0)
+  emqx_rest       = slice(aws_instance.ec2[*].public_ip, 1, var.instance_count)
   emqx_rest_count = var.instance_count - 1
 }
 
@@ -59,7 +59,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "ec2" {
   count = var.instance_count
 
-  ami                         = var.os == "ubuntu" ? data.aws_ami.ubuntu.id : data.aws_ami.centos.id
+  ami = var.os == "ubuntu" ? data.aws_ami.ubuntu.id : data.aws_ami.centos.id
   // always be true as you have to get public ip
   associate_public_ip_address = var.associate_public_ip_address
   instance_type               = var.instance_type
@@ -113,8 +113,8 @@ resource "null_resource" "emqx_cluster" {
   count = local.emqx_rest_count
 
   connection {
-    type = "ssh"
-    host = local.emqx_rest[count.index % local.emqx_rest_count]
+    type        = "ssh"
+    host        = local.emqx_rest[count.index % local.emqx_rest_count]
     user        = "ubuntu"
     private_key = var.private_key
   }

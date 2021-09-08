@@ -26,12 +26,12 @@ variable "allocated_storage" {
 
 variable "subnet_ids" {
   description = "The subnet ids for mysql"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "sg_ids" {
   description = "The security group ids for mysql"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "namespace" {

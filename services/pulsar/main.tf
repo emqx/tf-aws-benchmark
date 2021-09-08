@@ -30,11 +30,11 @@ module "pulsar_security_group" {
 module "pulsar_ec2" {
   source = "../../modules/pulsar"
 
-  namespace     = var.pulsar_namespace
+  namespace                   = var.pulsar_namespace
   associate_public_ip_address = var.associate_public_ip_address
-  instance_type = var.pulsar_instance_type
-  subnet_ids    = module.pulsar_networking.subnet_ids
-  sg_ids        = [module.pulsar_security_group.sg_id]
-  private_key   = var.private_key
-  key_name      = var.key_name
+  instance_type               = var.pulsar_instance_type
+  subnet_ids                  = module.pulsar_networking.subnet_ids
+  sg_ids                      = [module.pulsar_security_group.sg_id]
+  private_key                 = var.private_key
+  key_name                    = var.key_name
 }
