@@ -75,5 +75,5 @@ variable "pulsar_instance_count" {
 variable "pulsar_instance_type" {
   description = "Instance type of pulsar"
   type        = string
-  default     = "t2.medium"
+  default     = "t2.xlarge"
 }
