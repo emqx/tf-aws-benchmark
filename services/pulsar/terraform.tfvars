@@ -32,4 +32,4 @@ egress_with_cidr_blocks = [
 ]
 
 ## pulsar ec2
-pulsar_instance_type = "t2.medium"
+pulsar_instance_type = "t2.xlarge"
