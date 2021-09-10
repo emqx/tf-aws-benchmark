@@ -75,5 +75,5 @@ variable "redis_instance_count" {
 variable "redis_instance_type" {
   description = "Instance type of redis"
   type        = string
-  default     = "t2.medium"
+  default     = "t2.xlarge"
 }
