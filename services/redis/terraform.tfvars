@@ -32,4 +32,4 @@ egress_with_cidr_blocks = [
 ]
 
 ## redis ec2
-redis_instance_type = "t2.medium"
+redis_instance_type = "t2.xlarge"
