@@ -88,7 +88,7 @@ variable "emqx_package" {
 variable "key_name" {
   description = "the name of key"
   type        = string
-  default     = "aws-sg-bench"
+  default     = "emqx-ci-robor"
 }
 
 variable "emqx_lic" {
@@ -112,5 +112,5 @@ variable "emqx_instance_count" {
 variable "emqx_instance_type" {
   description = "Instance type of emqx"
   type        = string
-  default     = "t2.micro"
+  default     = "c5.2xlarge"
 }
