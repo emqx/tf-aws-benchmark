@@ -75,5 +75,5 @@ egress_with_cidr_blocks = [
 
 ## ec2
 associate_public_ip_address = true
-emqx_instance_type          = "t2.micro"
+emqx_instance_type          = "c5.2xlarge"
 os                          = "ubuntu"
