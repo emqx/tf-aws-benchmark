@@ -1,6 +1,6 @@
 ## common
 
-emqx_namespace = "tf-emqx"
+emqx_namespace = "tf-emqx-test"
 
 ## vpc
 
