@@ -1,6 +1,6 @@
 ## common
 
-webhook_namespace = "tf-webhook"
+webhook_namespace = "tf-web-hook"
 
 ## vpc
 
