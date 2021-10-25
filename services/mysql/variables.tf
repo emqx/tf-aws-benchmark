@@ -9,7 +9,7 @@ variable "region" {
 variable "mysql_namespace" {
   description = "mysql namespace"
   type        = string
-  default     = "tf-mysql"
+  default     = "tf-broker-mysql"
 }
 
 variable "access_key" {
@@ -30,8 +30,8 @@ variable "mysql_subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.120.0/24",
-    "172.31.121.0/24"
+    "172.31.230.0/24",
+    "172.31.231.0/24"
   ]
 }
 
@@ -65,7 +65,7 @@ variable "mysql_engine_version" {
 
 variable "db_id" {
   type        = string
-  default     = "tf-mysql"
+  default     = "tf-broker-mysql"
   description = "description"
 }
 

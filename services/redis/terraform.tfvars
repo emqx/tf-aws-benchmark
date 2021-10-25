@@ -1,6 +1,6 @@
 ## common
 
-redis_namespace = "tf-redis"
+redis_namespace = "tf-broker-redis"
 
 ## vpc
 

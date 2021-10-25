@@ -9,7 +9,7 @@ variable "region" {
 variable "pgsql_namespace" {
   description = "pgsql namespace"
   type        = string
-  default     = "tf-pgsql"
+  default     = "tf-broker-pgsql"
 }
 
 variable "access_key" {
@@ -30,8 +30,8 @@ variable "pgsql_subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.140.0/24",
-    "172.31.141.0/24"
+    "172.31.250.0/24",
+    "172.31.251.0/24"
   ]
 }
 
@@ -65,7 +65,7 @@ variable "pgsql_engine_version" {
 
 variable "db_id" {
   type        = string
-  default     = "tf-pgsql"
+  default     = "tf-broker-pgsql"
   description = "description"
 }
 

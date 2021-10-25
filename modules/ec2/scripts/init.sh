@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-LIC="/home/ubuntu/emqx/etc/emqx.lic"
 HOME="/home/ubuntu"
 
 # Install necessary dependencies
@@ -46,38 +45,14 @@ sudo sysctl -w net.netfilter.nf_conntrack_tcp_timeout_time_wait=30
 sudo sysctl -w net.ipv4.tcp_max_tw_buckets=1048576
 sudo sysctl -w net.ipv4.tcp_fin_timeout=15
 
-# export emqx variables
-# sudo cat >> ~/.bashrc<<EOF
-# export EMQX_NODE__PROCESS_LIMIT=2097152
-# export EMQX_NODE__MAX_PORTS=1048576
-# export EMQX_LISTENER__TCP__EXTERNAL__ACCEPTORS=64
-# export EMQX_LISTENER__TCP__EXTERNAL__MAX_CONN_RATE=10000
-# export EMQX_LISTENER__TCP__EXTERNAL__ACTIVE_N=100
-# export EMQX_SYSMON__LARGE_HEAP=64MB
-# export EMQX_NODE__NAME=emqx@${local_ip}
-# EOF
-# source ~/.bashrc
 
 # install emqx
 sudo unzip /tmp/emqx.zip -d $HOME
 sudo chown -R ubuntu:ubuntu $HOME/emqx
-sudo rm /tmp/emqx.zip
+export _EMQX_ENABLE_DASHBOARD=true
 
 # emqx tuning
-sudo sed -i 's/## node.process_limit = 2097152/node.process_limit = 2097152/g' $HOME/emqx/etc/emqx.conf
-sudo sed -i 's/## node.max_ports = 1048576/node.max_ports = 1048576/g' $HOME/emqx/etc/emqx.conf
-sudo sed -i 's/listener.tcp.external.acceptors = 8/listener.tcp.external.acceptors = 64/g' $HOME/emqx/etc/listeners.conf
-sudo sed -i 's/listener.tcp.external.max_conn_rate = 1000/listener.tcp.external.max_conn_rate = 10000/g' $HOME/emqx/etc/listeners.conf
-sudo sed -i 's/sysmon.large_heap = 8MB/sysmon.large_heap = 64MB/g' $HOME/emqx/etc/sys_mon.conf
-sudo sed -i 's/node.name = emqx@127.0.0.1/node.name = emqx@${local_ip}/g' $HOME/emqx/etc/emqx.conf
-
-# create emqx license file
-sudo cat > $LIC<<EOF
-${emqx_lic}
-EOF
-
-# start emqx
-# sudo $HOME/emqx/bin/emqx start
+sudo sed -i 's/name = "emqx@127.0.0.1"/name = emqx@${local_ip}/g' $HOME/emqx/etc/emqx.conf
 
 # install collected
 sudo wget -q --no-check-certificate https://13.251.133.132/xmeter_tools/collectd.conf.ubuntu16.sample

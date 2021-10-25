@@ -5,7 +5,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Name        = "tf-test-automation"
+      Name        = "tf-broker-automation"
       Product     = "test-automation"
       Environment = "test"
     }

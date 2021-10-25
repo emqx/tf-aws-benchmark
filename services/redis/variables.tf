@@ -21,7 +21,7 @@ variable "secret_key" {
 variable "redis_namespace" {
   description = "redis namespace"
   type        = string
-  default     = "tf-redis"
+  default     = "tf-broker-redis"
 }
 
 ## vpc
@@ -30,7 +30,7 @@ variable "subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.150.0/24"
+    "172.31.228.0/24"
   ]
 }
 
@@ -63,7 +63,7 @@ variable "private_key" {
 variable "key_name" {
   description = "the name of key"
   type        = string
-  default     = "aws-sg-bench"
+  default     = "emqx-ci-robor"
 }
 
 variable "redis_instance_count" {

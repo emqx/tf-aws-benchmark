@@ -61,6 +61,6 @@ resource "aws_instance" "mongodb" {
   }
 
   tags = {
-    Name = "${var.namespace}-mongo"
+    Name = "${var.namespace}"
   }
 }

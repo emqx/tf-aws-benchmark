@@ -1,7 +1,3 @@
-## common
-
-mongo_namespace = "tf-mongo"
-
 ## vpc
 
 mongo_ingress_with_cidr_blocks = [

@@ -21,7 +21,7 @@ variable "secret_key" {
 variable "mongo_namespace" {
   description = "mongo namespace"
   type        = string
-  default     = "tf-mongo"
+  default     = "tf-broker-mongo"
 }
 
 ## vpc
@@ -30,7 +30,7 @@ variable "subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.160.0/24"
+    "172.31.240.0/24"
   ]
 }
 

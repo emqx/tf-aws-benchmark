@@ -1,9 +1,9 @@
 resource "aws_db_subnet_group" "rds" {
-  name       = "${var.namespace}-db-sn-gp"
+  name       = "${var.namespace}-broker-sn-gp"
   subnet_ids = var.subnet_ids
 
   tags = {
-    Name = "${var.namespace}-db-sn-gp"
+    Name = "${var.namespace}-broker-sn-gp"
   }
 }
 

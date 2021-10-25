@@ -53,6 +53,6 @@ module "emqx_ec2" {
   private_key                 = var.private_key
   emqx_package                = var.emqx_package
   key_name                    = var.key_name
-  emqx_lic                    = var.emqx_lic
   os                          = var.os
+  emqx_lic                    = var.emqx_lic
 }
