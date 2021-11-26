@@ -49,7 +49,6 @@ sudo sysctl -w net.ipv4.tcp_fin_timeout=15
 # install emqx
 sudo unzip /tmp/emqx.zip -d $HOME
 sudo chown -R ubuntu:ubuntu $HOME/emqx
-export _EMQX_ENABLE_DASHBOARD=true
 
 # emqx tuning
 sudo sed -i 's/name = "emqx@127.0.0.1"/name = emqx@${local_ip}/g' $HOME/emqx/etc/emqx.conf
