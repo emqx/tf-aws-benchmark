@@ -96,8 +96,9 @@ resource "aws_instance" "ec2" {
   # Note: validate the above variables, you have to start emqx separately
   provisioner "remote-exec" {
     inline = [
+      "/home/ubuntu/emqx/bin/emqx start",
       "/home/ubuntu/emqx/bin/emqx export _EMQX_ENABLE_DASHBOARD=true",
-      "/home/ubuntu/emqx/bin/emqx start"
+      "/home/ubuntu/emqx/bin/emqx restart"
       # "sudo curl -k https://13.251.133.132/xmeter_tools/script.sh | sh"
     ]
   }
