@@ -77,7 +77,7 @@ variable "db_password" {
 
 variable "instance_type" {
   type        = string
-  default     = "db.t3.micro"
+  default     = "db.t3.xlarge"
   description = "db instance type"
 }
 
