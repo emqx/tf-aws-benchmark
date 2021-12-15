@@ -8,3 +8,4 @@ sudo apt-get -y install openjdk-11-jre-headless
 wget https://github.com/emqx/emqx-svt-web-server/releases/download/web-server-1.0/svtserver-0.0.1.jar
 nohup java -jar svtserver-0.0.1.jar > log.file 2>&1 &
 sleep 10
+ps aux | grep java
