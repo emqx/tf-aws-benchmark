@@ -30,7 +30,7 @@ variable "subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.260.0/24"
+    "172.31.255.0/24"
   ]
 }
 
