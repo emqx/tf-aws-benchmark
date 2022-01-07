@@ -21,7 +21,7 @@ variable "secret_key" {
 variable "webhook_namespace" {
   description = "webhook namespace"
   type        = string
-  default     = "tf-webhook"
+  default     = "tf-broker-webhook"
 }
 
 ## vpc
@@ -30,7 +30,7 @@ variable "subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.170.0/24"
+    "172.31.260.0/24"
   ]
 }
 

@@ -55,6 +55,6 @@ resource "aws_instance" "webhook" {
   }
 
   tags = {
-    Name = "${var.namespace}-webhook"
+    Name = "${var.namespace}"
   }
 }
