@@ -47,7 +47,7 @@ sudo sysctl -w net.ipv4.tcp_fin_timeout=15
 
 
 # install emqx
-#unzip /tmp/emqx.zip -d $HOME
+unzip /tmp/emqx.zip -d $HOME
 chown -R ubuntu:ubuntu $HOME/emqx
 
 # emqx tuning
