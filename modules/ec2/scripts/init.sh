@@ -47,6 +47,7 @@ sudo sysctl -w net.ipv4.tcp_fin_timeout=15
 
 
 # install emqx
+ls -alt /tmp
 tar -zxvf /tmp/emqx.tar.gz
 #unzip /tmp/emqx.zip -d $HOME
 chown -R ubuntu:ubuntu /tmp/emqx
