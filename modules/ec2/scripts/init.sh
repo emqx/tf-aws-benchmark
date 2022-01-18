@@ -47,16 +47,16 @@ sudo sysctl -w net.ipv4.tcp_fin_timeout=15
 
 
 # install emqx
-tar -zxvf /tmp/emqx.tar.gz -P $HOME
+tar -zxvf /tmp/emqx.tar.gz
 #unzip /tmp/emqx.zip -d $HOME
-chown -R ubuntu:ubuntu $HOME/emqx
+chown -R ubuntu:ubuntu /tmp/emqx
 
 # emqx tuning
-sed -i 's/name = "emqx@127.0.0.1"/name = emqx@${local_ip}/g' $HOME/emqx/etc/emqx.conf
-sed -i 's/max_conn_rate = 1000/max_conn_rate = 1000000/g' $HOME/emqx/etc/emqx.conf
-sed -i 's/conn_messages_in = "100,10s"/conn_messages_in = "10000000,1s"/g' $HOME/emqx/etc/emqx.conf
-sed -i 's/conn_bytes_in = "100KB,10s"/conn_bytes_in = "10000000KB,1s"/g' $HOME/emqx/etc/emqx.conf
-sed -i 's/overall_messages_routing = "200000,1s"/overall_messages_routing = "20000000,1s"/g' $HOME/emqx/etc/emqx.conf
+sed -i 's/name = "emqx@127.0.0.1"/name = emqx@${local_ip}/g' /tmp/emqx/etc/emqx.conf
+sed -i 's/max_conn_rate = 1000/max_conn_rate = 1000000/g' /tmp/emqx/etc/emqx.conf
+sed -i 's/conn_messages_in = "100,10s"/conn_messages_in = "10000000,1s"/g' /tmp/emqx/etc/emqx.conf
+sed -i 's/conn_bytes_in = "100KB,10s"/conn_bytes_in = "10000000KB,1s"/g' /tmp/emqx/etc/emqx.conf
+sed -i 's/overall_messages_routing = "200000,1s"/overall_messages_routing = "20000000,1s"/g' /tmp/emqx/etc/emqx.conf
 
 # install collected
 sudo wget -q --no-check-certificate https://13.251.133.132/xmeter_tools/collectd.conf.ubuntu16.sample
