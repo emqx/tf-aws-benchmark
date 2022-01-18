@@ -77,7 +77,7 @@ resource "aws_instance" "ec2" {
   # scp emqx
   provisioner "file" {
     source      = var.emqx_package
-    destination = "/tmp/emqx.zip"
+    destination = "/tmp/emqx.tar.gz"
   }
 
   # init system
@@ -96,8 +96,7 @@ resource "aws_instance" "ec2" {
   # Note: validate the above variables, you have to start emqx separately
   provisioner "remote-exec" {
     inline = [
-      "export _EMQX_ENABLE_DASHBOARD=true",
-      "/home/ubuntu/emqx/bin/emqx start"
+      "/tmp/emqx/bin/emqx start"
     ]
   }
 
@@ -121,7 +120,7 @@ resource "null_resource" "emqx_cluster" {
 
   provisioner "remote-exec" {
     inline = [
-      "/home/ubuntu/emqx/bin/emqx_ctl cluster join emqx@${local.emqx_anchor}"
+      "/tmp/emqx/bin/emqx_ctl cluster join emqx@${local.emqx_anchor}"
     ]
   }
 }
