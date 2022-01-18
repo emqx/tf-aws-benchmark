@@ -96,7 +96,7 @@ resource "aws_instance" "ec2" {
   # Note: validate the above variables, you have to start emqx separately
   provisioner "remote-exec" {
     inline = [
-      "/tmp/emqx/bin/emqx start"
+      "/home/ubuntu/emqx/bin/emqx start"
     ]
   }
 
@@ -120,7 +120,7 @@ resource "null_resource" "emqx_cluster" {
 
   provisioner "remote-exec" {
     inline = [
-      "/tmp/emqx/bin/emqx_ctl cluster join emqx@${local.emqx_anchor}"
+      "/home/ubuntu/emqx/bin/emqx_ctl cluster join emqx@${local.emqx_anchor}"
     ]
   }
 }
