@@ -5,5 +5,5 @@ output "redis_private_ips" {
 
 output "redis_public_ips" {
   description = "public ip of ec2 for each project"
-  value       = join(",", module.redis_ec2.public_ip)
+  value       = module.redis_ec2.public_ip
 }

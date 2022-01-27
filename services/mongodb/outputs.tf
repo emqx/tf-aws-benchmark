@@ -5,5 +5,5 @@ output "mongo_private_ips" {
 
 output "mongo_public_ips" {
   description = "public ip of ec2 for each project"
-  value       = join(",", module.mongo.public_ip)
+  value       = module.mongo.public_ip
 }
