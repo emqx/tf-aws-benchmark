@@ -78,7 +78,7 @@ variable "kafka_ebs_volume_size" {
 variable "kafka_cluster_name" {
   description = "The cluster name of kafka"
   type        = string
-  default     = "kafka"
+  default     = "broker-kafka"
 }
 
 variable "kafka_replication_factor" {
