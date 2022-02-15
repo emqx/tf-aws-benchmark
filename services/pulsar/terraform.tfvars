@@ -1,6 +1,6 @@
 ## common
 
-pulsar_namespace = "tf-pulsar"
+pulsar_namespace = "tf-broker-pulsar"
 
 ## vpc
 

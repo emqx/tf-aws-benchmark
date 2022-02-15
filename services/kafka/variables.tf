@@ -22,7 +22,7 @@ variable "secret_key" {
 variable "kafka_namespace" {
   description = "kafka namespace"
   type        = string
-  default     = "tf-kafka"
+  default     = "tf-broker-kafka"
 }
 
 ## vpc
@@ -31,9 +31,9 @@ variable "subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.110.0/24",
-    "172.31.111.0/24",
-    "172.31.112.0/24"
+    "172.31.210.0/24",
+    "172.31.211.0/24",
+    "172.31.212.0/24"
   ]
 }
 

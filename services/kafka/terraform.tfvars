@@ -1,6 +1,6 @@
 ## common
 
-kafka_namespace = "tf-kafka"
+kafka_namespace = "tf-broker-kafka"
 
 
 ## vpc

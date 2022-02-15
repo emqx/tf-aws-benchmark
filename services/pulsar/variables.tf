@@ -21,7 +21,7 @@ variable "secret_key" {
 variable "pulsar_namespace" {
   description = "pulsar namespace"
   type        = string
-  default     = "tf-pulsar"
+  default     = "tf-broker-pulsar"
 }
 
 ## vpc
@@ -30,7 +30,7 @@ variable "subnet_cidr_blocks" {
   description = "subnets of vpc"
   type        = list(string)
   default = [
-    "172.31.130.0/24"
+    "172.31.133.0/24"
   ]
 }
 
