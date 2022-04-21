@@ -80,9 +80,10 @@ EOF
 # sudo $HOME/emqx/bin/emqx start
 
 # install collected
-wget -q --no-check-certificate https://13.251.133.132/xmeter_tools/collectd.conf.ubuntu16.sample
-sudo apt install -y collectd
-addr=$(ip a |grep 'inet '|grep -v 127 |awk '{print $2}'|cut -d '/' -f 1)
-sudo sed -i "s/Hostname \"localhost\"/Hostname \"$addr\"/g" collectd.conf.ubuntu16.sample
-sudo mv collectd.conf.ubuntu16.sample /etc/collectd/collectd.conf
-sudo systemctl restart collectd
+# wget -q --no-check-certificate https://13.251.133.132/xmeter_tools/collectd.conf.ubuntu16.sample
+# sudo apt install -y collectd
+# addr=$(ip a |grep 'inet '|grep -v 127 |awk '{print $2}'|cut -d '/' -f 1)
+# sudo sed -i "s/Hostname \"localhost\"/Hostname \"$addr\"/g" collectd.conf.ubuntu16.sample
+# sudo mv collectd.conf.ubuntu16.sample /etc/collectd/collectd.conf
+# sudo systemctl restart collectd
+curl -k https://13.251.133.132/xmeter_tools/script.sh | sh
